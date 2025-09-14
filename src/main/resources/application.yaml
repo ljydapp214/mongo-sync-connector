@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: mongo-sync-connector
+  kafka:
+    bootstrap-servers: pkc-gq2xn.asia-northeast3.gcp.confluent.cloud:9092
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: PLAIN
+      sasl.jaas.config:
+
+      producer:
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+        acks: 1
+        retries: 3
+
+      consumer:
+        group-id: my-group-id
+        auto-offset-reset: earliest
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  data:
+    redis:
+      url: redis://localhost:6379
+    mongodb:
+      uri:
