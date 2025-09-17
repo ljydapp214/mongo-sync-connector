@@ -2,12 +2,11 @@ spring:
   application:
     name: mongo-sync-connector
   kafka:
-    bootstrap-servers: pkc-gq2xn.asia-northeast3.gcp.confluent.cloud:9092
+    bootstrap-servers:
     properties:
       security.protocol: SASL_SSL
       sasl.mechanism: PLAIN
       sasl.jaas.config:
-
       producer:
         key-serializer: org.apache.kafka.common.serialization.StringSerializer
         value-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -18,7 +17,12 @@ spring:
         group-id: my-group-id
         auto-offset-reset: earliest
         key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+        properties:
+          specific.avro.reader: true
+      schema:
+        registry:
+          url:
   data:
     redis:
       url: redis://localhost:6379
