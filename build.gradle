@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.5.5'
     id 'io.spring.dependency-management' version '1.1.7'
+    id 'com.github.davidmc24.gradle.plugin.avro' version '1.9.1'
 }
 
 group = 'org.jy.practice'
@@ -16,14 +17,19 @@ java {
 
 repositories {
     mavenCentral()
+    maven { url "https://packages.confluent.io/maven/" }
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.redisson:redisson-spring-boot-starter:3.24.3'
+
     implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'org.apache.avro:avro:1.12.0'
+    implementation 'io.confluent:kafka-avro-serializer:8.0.0'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
@@ -32,4 +38,9 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+avro {
+    createSetters = false
+    fieldVisibility = "PRIVATE"
 }
