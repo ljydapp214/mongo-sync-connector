@@ -1,0 +1,225 @@
+{
+  "connect.name": "test.DPPF.meta_info.Envelope",
+  "connect.version": 1,
+  "fields": [
+    {
+      "default": null,
+      "name": "before",
+      "type": [
+        "null",
+        {
+          "connect.name": "test.DPPF.meta_info.Value",
+          "fields": [
+            {
+              "name": "id",
+              "type": "long"
+            },
+            {
+              "name": "clip_id",
+              "type": "int"
+            },
+            {
+              "name": "meta_info_id",
+              "type": "int"
+            },
+            {
+              "default": "",
+              "name": "meta_info",
+              "type": {
+                "connect.default": "",
+                "type": "string"
+              }
+            },
+            {
+              "default": "",
+              "name": "meta_info_key",
+              "type": {
+                "connect.default": "",
+                "type": "string"
+              }
+            },
+            {
+              "default": 0,
+              "name": "created_at",
+              "type": [
+                {
+                  "connect.default": 0,
+                  "connect.name": "io.debezium.time.Timestamp",
+                  "connect.version": 1,
+                  "type": "long"
+                },
+                "null"
+              ]
+            },
+            {
+              "default": 0,
+              "name": "updated_at",
+              "type": {
+                "connect.default": 0,
+                "connect.name": "io.debezium.time.Timestamp",
+                "connect.version": 1,
+                "type": "long"
+              }
+            }
+          ],
+          "name": "Value",
+          "type": "record"
+        }
+      ]
+    },
+    {
+      "default": null,
+      "name": "after",
+      "type": [
+        "null",
+        "Value"
+      ]
+    },
+    {
+      "name": "source",
+      "type": {
+        "connect.name": "io.debezium.connector.v2.mysql.Source",
+        "fields": [
+          {
+            "name": "version",
+            "type": "string"
+          },
+          {
+            "name": "connector",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "ts_ms",
+            "type": "long"
+          },
+          {
+            "default": "false",
+            "name": "snapshot",
+            "type": [
+              {
+                "connect.default": "false",
+                "connect.name": "io.debezium.data.Enum",
+                "connect.parameters": {
+                  "allowed": "true,first,first_in_data_collection,last_in_data_collection,last,false,incremental"
+                },
+                "connect.version": 1,
+                "type": "string"
+              },
+              "null"
+            ]
+          },
+          {
+            "name": "db",
+            "type": "string"
+          },
+          {
+            "default": null,
+            "name": "sequence",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "default": null,
+            "name": "table",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "server_id",
+            "type": "long"
+          },
+          {
+            "default": null,
+            "name": "gtid",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "file",
+            "type": "string"
+          },
+          {
+            "name": "pos",
+            "type": "long"
+          },
+          {
+            "name": "row",
+            "type": "int"
+          },
+          {
+            "default": null,
+            "name": "thread",
+            "type": [
+              "null",
+              "long"
+            ]
+          },
+          {
+            "default": null,
+            "name": "query",
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        ],
+        "name": "Source",
+        "namespace": "io.debezium.connector.v2.mysql",
+        "type": "record"
+      }
+    },
+    {
+      "name": "op",
+      "type": "string"
+    },
+    {
+      "default": null,
+      "name": "ts_ms",
+      "type": [
+        "null",
+        "long"
+      ]
+    },
+    {
+      "default": null,
+      "name": "transaction",
+      "type": [
+        "null",
+        {
+          "connect.name": "event.block",
+          "connect.version": 1,
+          "fields": [
+            {
+              "name": "id",
+              "type": "string"
+            },
+            {
+              "name": "total_order",
+              "type": "long"
+            },
+            {
+              "name": "data_collection_order",
+              "type": "long"
+            }
+          ],
+          "name": "block",
+          "namespace": "event",
+          "type": "record"
+        }
+      ]
+    }
+  ],
+  "name": "Envelope",
+  "namespace": "test.DPPF.meta_info",
+  "type": "record"
+}
