@@ -33,7 +33,7 @@ public class Essential {
 		long clipId,
 		String name,
 		long firstCategory,
-		long subProjectId,
+		long secondCategory,
 		long thirdCategory,
 		LocalDateTime dataCollectedTime,
 		boolean available,
@@ -44,7 +44,7 @@ public class Essential {
 		this.clipId = clipId;
 		this.name = name;
 		this.firstCategory = firstCategory;
-		this.secondCategory = subProjectId;
+		this.secondCategory = secondCategory;
 		this.thirdCategory = thirdCategory;
 		this.dataCollectedTime = dataCollectedTime;
 		this.available = available;
