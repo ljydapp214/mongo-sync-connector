@@ -3,6 +3,42 @@ spring:
     name: mongo-sync-connector
   data:
     redis:
-      url: redis://localhost:6379
+      host: localhost
+      port: 6379
+      username: default
+      password:
+
     mongodb:
-      uri: mongodb://121.156.99.40:32322/cdc_test
+      host:
+      port:
+      username:
+      password:
+      authentication-database: admin
+      database:
+      field-naming-strategy: org.springframework.data.mapping.model.SnakeCaseFieldNamingStrategy
+      auto-index-creation: true
+
+  kafka:
+    bootstrap-servers: pkc-gq2xn.asia-northeast3.gcp.confluent.cloud:9092
+    consumer:
+      group-id: example-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username='73G4HJD32S2IU4HI' password='cfltzeak/85wxJhZlU0mB/oflEntwFNtFyn2nhK/Of3EB7H6F5LVEI9yyG2l3WRQ';
+      specific.avro.reader: true
+      schema:
+        registry:
+          url: https://psrc-yo9576.asia-northeast3.gcp.confluent.cloud
+      basic:
+        auth:
+          credentials:
+            source: USER_INFO
+          user:
+            info: YQRN4KANFZSB4EFJ:cfltfP0CIHKxkZeQCIHqs+lXVXunfek04icMETnvWTm22WtdCrjbr3WFW7eLrReA
+
+logging:
+  level:
+    org.springframework.data.mongodb.core.MongoTemplate: debug
